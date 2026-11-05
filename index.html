@@ -33,7 +33,8 @@ body.ready header{transform:none}
 .brand small{font-size:.5em;letter-spacing:.42em}
 .brand .bar-div{display:inline-block;width:1px;height:1.1em;background:currentColor;opacity:.6;margin:0 .7em 0 .55em}
 header ul{display:flex;gap:2.4rem;list-style:none;align-items:center;font-weight:500}
-header svg{width:24px;height:24px}
+header li{display:flex;align-items:center}
+header svg{display:block;width:24px;height:24px}
 .dots{position:fixed;right:3vw;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:1.1rem}
 .dots button{width:9px;height:9px;border-radius:50%;background:var(--ink);opacity:.35;transition:transform .4s,opacity .4s}
 .dots button.on{transform:scale(1.5);opacity:1}
@@ -55,12 +56,17 @@ header svg{width:24px;height:24px}
 .pill{display:inline-flex;align-items:center;gap:1.2rem;border:1px solid var(--ink);border-radius:60px;padding:.8rem .8rem .8rem 1.9rem;font-size:1.15rem;margin-top:2.6rem;transition:background .3s,color .3s}
 .pill svg{width:40px;height:40px}
 .pill:hover{background:var(--ink);color:var(--bg)}
-.scroller{position:fixed;left:0;right:0;bottom:calc(1.8rem + env(safe-area-inset-bottom,0px));z-index:3;text-align:center;font-size:.8rem;display:grid;justify-items:center;transition:opacity .4s}
+.scroller{pointer-events:none;position:fixed;left:0;right:0;bottom:calc(1.8rem + env(safe-area-inset-bottom,0px));z-index:3;text-align:center;font-size:.8rem;display:grid;justify-items:center;transition:opacity .4s}
 .scroller svg{width:24px;height:24px;stroke-width:2;animation:bob 1.6s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(7px)}}
 .endbox{display:grid;justify-items:center;gap:.9rem;pointer-events:auto}
-.mail{display:inline-flex;align-items:center;gap:.5rem;color:var(--ink);font-size:.9rem;letter-spacing:.04em;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
-.mail svg{width:16px;height:16px}
+.next{display:flex;align-items:center;justify-content:center;gap:0 1.8rem;margin-top:-.2rem}
+.next a{display:inline-flex;align-items:center;gap:.55rem;min-height:40px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.next .main{font-size:.92rem;font-weight:500}
+.next .back{font-size:.8rem;opacity:.72;transition:opacity .25s}
+.next .back:hover{opacity:1}
+.next svg{width:18px;height:10px;stroke-width:1;flex:none;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.next a:hover svg{transform:translateX(4px)}
 .eng{display:flex;align-items:center;gap:.8rem;background:var(--chip);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:60px;padding:.55rem .6rem .55rem 1.4rem;max-width:94vw}
 .eng label{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;opacity:.8;white-space:nowrap}
 .eng input{font:400 1.05rem/1 Lato,Archivo,sans-serif;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding:.4rem .2rem;width:12ch;min-width:0;outline:none}
@@ -76,8 +82,11 @@ header{padding:1.3rem 6vw 0}header ul{gap:1.2rem}.know{display:none}.dots{right:
 .left::before,.right::before{background:linear-gradient(0deg,rgba(var(--scrim),.95) 0,rgba(var(--scrim),.75) 30%,rgba(var(--scrim),0) 55%)}
 .right .lead,.lead{margin:1rem auto 0}.pill{margin-top:1.4rem}
 .eng{padding-left:1rem;gap:.5rem}.eng label{display:none}.eng .go span{display:none}
-.pill{display:none}.scroller{display:none}}
-@media (prefers-reduced-motion:reduce){.scroller svg{animation:none}}
+.pill{display:none}.scroller{display:none}
+.next{flex-direction:column;gap:0;margin-top:-.4rem}}
+@media (min-width:761px) and (min-height:501px){.top{padding-bottom:calc(clamp(2.4rem,9vh,6.5rem) + env(safe-area-inset-bottom,0px))}.endbox{gap:1.15rem}.next{margin-top:0;gap:0 2.6rem}}
+@media (max-height:500px){.top{padding-bottom:calc(.6rem + env(safe-area-inset-bottom,0px))}.endbox{gap:.5rem}.next{flex-direction:row;gap:0 1.4rem;margin-top:-.3rem}.next a{min-height:34px}}
+@media (prefers-reduced-motion:reduce){.scroller svg{animation:none}.next svg{transition:none}}
 </style>
 </head>
 <body class="lock">
@@ -106,7 +115,7 @@ header{padding:1.3rem 6vw 0}header ul{gap:1.2rem}.know{display:none}.dots{right:
 <section class="scene top"><div class="txt"><span class="script">a little something</span><h2 class="disp">For You</h2>
 <p class="lead" id="engNote">Type a name to see it engraved on the bar.</p></div>
 <div class="endbox"><div class="eng" id="engRow"><label for="txt">Your name</label><input id="txt" maxlength="10" autocomplete="off" spellcheck="false" placeholder="NICOLE" aria-describedby="engNote">
-<button class="go" id="share" aria-label="Copy share link"><svg viewBox="0 0 24 24"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg><span>Share</span></button></div><a class="mail" href="mailto:jnlstudio.design@gmail.com"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>jnlstudio.design@gmail.com</a></div></section>
+<button class="go" id="share" aria-label="Copy share link"><svg viewBox="0 0 24 24"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg><span>Share</span></button></div><nav class="next" aria-label="More from JNL"><a class="main" href="https://jnlstudio.github.io/JNLCurated/">Continue to JNL Curated <svg viewBox="0 0 18 10" aria-hidden="true"><path d="M0 5h17M12.5.75 17 5l-4.5 4.25"/></svg></a><a class="back" href="https://jnlstudio.github.io/Jewellery/">Back to JNL Studio <svg viewBox="0 0 18 10" aria-hidden="true"><path d="M0 5h17M12.5.75 17 5l-4.5 4.25"/></svg></a></nav></div></section>
 
 <div class="scroller"><p>Scroll to explore</p><svg viewBox="0 0 24 24"><path d="m8 12 4 4 4-4M12 8v8"/></svg></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -294,9 +303,14 @@ inp.addEventListener('keydown',e=>{if(e.key==='Enter')inp.blur()});
 $('#share').onclick=async()=>{const url=location.href.split('#')[0]+(custom?'#t='+encodeURIComponent(custom):'');
  try{await navigator.clipboard.writeText(url);toast('Link copied');chime(1661.22,.07)}catch(e){toast(url,true)}};
 const fromHash=clean(decodeURIComponent((location.hash.match(/t=([^&]*)/)||[])[1]||''));
+/* a shared link: keep the name from the very start, so it is ready however fast the pictures load */
+if(fromHash)inp.value=custom=fromHash;
 
 /* ---------- start ---------- */
 size();
+/* draw a name that is already set (shared link, or typed early) as soon as the plate photo and Lato are here; never wait for the other frames */
+(async()=>{await plateReady;try{await document.fonts.ready;await document.fonts.load('400 138px Lato')}catch(e){}
+ if(custom){buildEng();need=true}})();
 (async()=>{
  const bar=$('.loader .bar'),lt=$('#ltxt');let first=true;
  const fontReady=document.fonts?document.fonts.ready:Promise.resolve();
@@ -305,9 +319,8 @@ size();
   if(first&&loaded>=order.filter(i=>i<60).length){first=false;start()}}});
  async function start(){await fontReady;requestAnimationFrame(loop);$('.loader').classList.add('out');document.body.classList.add('ready');
   setTimeout(()=>{document.body.classList.remove('lock');$('.loader').style.display='none';
-   if(fromHash){inp.value=custom=fromHash;goTo(SEG.length-1);try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}else scrollTo(0,0)},900)}
+   if(fromHash){goTo(SEG.length-1);try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}else scrollTo(0,0)},900)}
  await Promise.all(workers);if(first){first=false;start()}
- await plateReady;await fontReady;if(custom){buildEng();need=true}
 })();
 </script>
 </body>
